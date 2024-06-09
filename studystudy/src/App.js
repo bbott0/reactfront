@@ -8,8 +8,6 @@ import { Routes, Route } from 'react-router-dom';
 import NotFound from './components/NotFound.js';
 import Login from './components/login/Login.js';
 import RecruitBoard from './components/board/RecruitBoard.js';
-import Profile from './components/profile/Myprofile.js';
-import UserProfile from './components/profile/userProfile.js';
 
 
 const App = () => {
@@ -22,8 +20,6 @@ const App = () => {
           <Route path="/Login" element={<Login />}></Route>
           <Route path="/Main" element={<Main />}></Route>
           <Route path="/RecruitBoard" element={<RecruitBoard />}></Route>
-          <Route path="/Myprofile" element={<Profile />}></Route>
-          <Route path="/RecruitBoard/userProfile" element={<UserProfile />}></Route>
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
         <Footer className="footer"/>
