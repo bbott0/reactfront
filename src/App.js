@@ -7,6 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
 import NotFound from './components/NotFound.js';
 import Login from './components/login/Login.js';
+import SignUp from './components/signUp/SignUp.js';
 import RecruitBoard from './components/board/RecruitBoard.js';
 import Profile from './components/profile/Myprofile.js';
 import UserProfile from './components/profile/userProfile.js';
@@ -20,6 +21,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Main />}></Route>
           <Route path="/Login" element={<Login />}></Route>
+          <Route path="/SignUp" element={<SignUp />}></Route>
           <Route path="/Main" element={<Main />}></Route>
           <Route path="/RecruitBoard" element={<RecruitBoard />}></Route>
           <Route path="/Myprofile" element={<Profile />}></Route>

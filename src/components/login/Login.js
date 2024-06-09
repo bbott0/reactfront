@@ -7,7 +7,7 @@ const Login = () => {
 
   const handleLogin = (event) => {
     event.preventDefault();
-    // 여기에 로그인 로직을 추가하세요.
+    // 로그인 로직
     console.log('로그인 시도:', username, password);
   };
 

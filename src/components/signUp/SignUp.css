@@ -1,0 +1,54 @@
+.signup-container {
+  width: 490px; 
+  margin: 0 auto;
+  margin-top : 50px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px; 
+  background-color: #f9f9f9;
+}
+
+.signup-container h2 {
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+}
+
+input[type='email'],
+input[type='password'],
+input[type='date'],
+select {
+  width: calc(100% - 20px); 
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+input[type='tel'],
+select {
+  width: calc(30.9% - 20px); 
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: inline-block;
+}
+button {
+  width: calc(100% - 20px); 
+  background-color: #e67e22;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #d35400;
+}
+
