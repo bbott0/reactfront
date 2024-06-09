@@ -1,5 +1,6 @@
 .signup-container {
   width: 490px; 
+  height: 600px;
   margin: 0 auto;
   margin-top : 50px;
   padding: 20px;
@@ -32,20 +33,21 @@ select {
 }
 input[type='tel'],
 select {
-  width: calc(30.9% - 20px); 
+  width: calc(33.5% - 20px); 
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   display: inline-block;
+  margin-top: 0px;
 }
 button {
   width: calc(100% - 20px); 
   background-color: #e67e22;
   color: white;
-  border: none;
+  border: 1px solid #ccc;
   padding: 10px;
-  border-radius: 5px;
   cursor: pointer;
+  border-radius: 5px !important;
 }
 
 button:hover {

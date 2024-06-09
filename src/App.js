@@ -1,34 +1,39 @@
-import Header from './components/Header.js'
-import Footer from './components/Footer.js'
-import './App.css';
-import Main from './components/main/Main.js';
-import './fonts/fonts.css'
-import { BrowserRouter } from 'react-router-dom';
-import { Routes, Route } from 'react-router-dom';
-import NotFound from './components/NotFound.js';
-import Login from './components/login/Login.js';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Main from './components/main/Main';
+import Login from './components/login/Login';
 import SignUp from './components/signUp/SignUp.js';
-import RecruitBoard from './components/board/RecruitBoard.js';
+import RecruitBoard from './components/recruitboard/RecruitBoard';
 import Profile from './components/profile/Myprofile.js';
 import UserProfile from './components/profile/userProfile.js';
+import NotFound from './components/NotFound';
+import RecruitBoardDetail from './components/recruitboard/RecruitBoardDetail'; 
+import RecruitBoardWrite from './components/recruitboard/RecruitBoardWrite'; 
+import './App.css';
+import './fonts/fonts.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const App = () => {
   return (
-    <div className='App'>
+    <div className="App">
       <BrowserRouter>
-        <Header className="header"/>
+        <Header className="header" />
         <Routes>
-          <Route path="/" element={<Main />}></Route>
+          <Route path="/" element={<Main />} />
           <Route path="/Login" element={<Login />}></Route>
-          <Route path="/SignUp" element={<SignUp />}></Route>
-          <Route path="/Main" element={<Main />}></Route>
-          <Route path="/RecruitBoard" element={<RecruitBoard />}></Route>
+		  <Route path="/SignUp" element={<SignUp />}></Route>
+          <Route path="/main" element={<Main />} />
+          <Route path="/recruitboard" element={<RecruitBoard />} />
           <Route path="/Myprofile" element={<Profile />}></Route>
           <Route path="/RecruitBoard/userProfile" element={<UserProfile />}></Route>
-          <Route path="*" element={<NotFound />}></Route>
+          <Route path="/board/:boardNo" element={<RecruitBoardDetail />} /> 
+          <Route path="/recruitboardwrite" element={<RecruitBoardWrite />} /> 
+          <Route path="*" element={<NotFound />} />
         </Routes>
-        <Footer className="footer"/>
+        <Footer className="footer" />
       </BrowserRouter>
     </div>
   );

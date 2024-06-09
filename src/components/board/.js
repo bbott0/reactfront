@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import searchBtn from '../../images/searchBtn.png';
+import TopSearch from './TopSearch';
+import TagFilter from './TagFilter';
 import './sideFilter.css';
 
 function SideFilter({ products }) {
+  const [searchTerm, setSearchTerm] = useState("");
   const [passingTags, setPassingTags] = useState({
-    search: {
-      inputTerm: ""
-    },
     region: {
       서유럽: false,
       동유럽: false,
@@ -19,12 +18,6 @@ function SideFilter({ products }) {
       동남아시아: false,
       동북아시아: false,
       기타: false
-    },
-    date: {
-      년: "",
-      월: "",
-      시작일: "",
-      종료일: ""
     },
     gender: {
       남자: false,
@@ -79,13 +72,16 @@ function SideFilter({ products }) {
     }
   });
 
-  const allFilterClickListener = (e, filterProp) => {
-    const name = e.target.dataset.name;
+  const handleSearchInputChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const handleTagItemClick = (tag, filterProp) => {
     setPassingTags(prevState => ({
       ...prevState,
       [filterProp]: {
         ...prevState[filterProp],
-        [name]: !prevState[filterProp][name]
+        [tag]: !prevState[filterProp][tag]
       }
     }));
   };
@@ -126,26 +122,14 @@ function SideFilter({ products }) {
     });
   };
 
-  const searchProducts = () => {
+  const searchProducts = (e) => {
+    e.preventDefault();
     const filteredProducts = multiPropsFilter(products, filteredCollected());
     return filteredProducts.filter(product => {
       return product.name
         .toLowerCase()
-        .includes(passingTags.search.inputTerm.toLowerCase());
+        .includes(searchTerm.toLowerCase());
     });
-  };
-
-  const renderFilterButtons = (items, filterProp) => {
-    return items.map(item => (
-      <button
-        key={item}
-        data-name={item}
-        onClick={e => allFilterClickListener(e, filterProp)}
-        className={`boardTag ${passingTags[filterProp][item] ? 'active' : ''}`}
-      >
-        {item}
-      </button>
-    ));
   };
 
   const regions = ['서유럽', '동유럽', '북유럽', '남유럽', '오세아니아', '아프리카', '남아메리카', '북아메리카', '동남아시아', '동북아시아', '기타'];
@@ -159,63 +143,56 @@ function SideFilter({ products }) {
 
   return (
     <>
-      <div className="searchContainer">
-        <form>
-          <div className="topSearch">
-            <p>여행 메이트를 찾아보세요</p>
-          </div>
-          <div className="inputContainer">
-            <input
-              type="text"
-              className="topSearchBar"
-              placeholder="검색어를 입력하세요"
-              value={passingTags.search.inputTerm}
-              onChange={e =>
-                setPassingTags({
-                  ...passingTags,
-                  search: { inputTerm: e.target.value }
-                })
-              }
-            />
-            <button type="button" className="searchBtn">
-              <img className="searchBtnIcon" src={searchBtn} alt="searchBtn" />
-            </button>
-          </div>
-        </form>
-      </div>
+      <TopSearch value={searchTerm} onChange={handleSearchInputChange} onSearch={searchProducts} />
       <div className="filterContainer">
-        <div className="filterGroup">
-          <h3>지역</h3>
-          {renderFilterButtons(regions, 'region')}
-        </div>
-        <div className="filterGroup">
-          <h3>성별</h3>
-          {renderFilterButtons(genders, 'gender')}
-        </div>
-        <div className="filterGroup">
-          <h3>타입</h3>
-          {renderFilterButtons(types, 'type')}
-        </div>
-        <div className="filterGroup">
-          <h3>예산</h3>
-          {renderFilterButtons(budgets, 'budget')}
-        </div>
-        <div className="filterGroup">
-          <h3>같이 즐겨요</h3>
-          {renderFilterButtons(activities, 'activities')}
-        </div>
-        <div className="filterGroup">
-          <h3>자기 피알</h3>
-          {renderFilterButtons(selfPR, 'selfPR')}
-        </div>
-        <div className="filterGroup">
-          <h3>시간대</h3>
-          {renderFilterButtons(timeOfDay, 'timeOfDay')}
-        </div>
-        <div className="filterGroup">
-          <h3>투어</h3>
-          {renderFilterButtons(tours, 'tour')}
-        </div>
+        <TagFilter
+          title="지역"
+          items={regions}
+          activeItems={Object.keys(passingTags.region).filter(item => passingTags.region[item])}
+          onItemClick={(item) => handleTagItemClick(item, 'region')}
+        />
+        <TagFilter
+          title="성별"
+          items={genders}
+          activeItems={Object.keys(passingTags.gender).filter(item => passingTags.gender[item])}
+          onItemClick={(item) => handleTagItemClick(item, 'gender')}
+        />
+        <TagFilter
+          title="타입"
+          items={types}
+          activeItems={Object.keys(passingTags.type).filter(item => passingTags.type[item])}
+          onItemClick={(item) => handleTagItemClick(item, 'type')}
+        />
+        <TagFilter
+          title="예산"
+          items={budgets}
+          activeItems={Object.keys(passingTags.budget).filter(item => passingTags.budget[item])}
+          onItemClick={(item) => handleTagItemClick(item, 'budget')}
+        />
+        <TagFilter
+          title="같이 즐겨요"
+          items={activities}
+          activeItems={Object.keys(passingTags.activities).filter(item => passingTags.activities[item])}
+          onItemClick={(item) => handleTagItemClick(item, 'activities')}
+        />
+        <TagFilter
+          title="자기 피알"
+          items={selfPR}
+          activeItems={Object.keys(passingTags.selfPR).filter(item => passingTags.selfPR[item])}
+          onItemClick={(item) => handleTagItemClick(item, 'selfPR')}
+        />
+        <TagFilter
+          title="시간대"
+          items={timeOfDay}
+          activeItems={Object.keys(passingTags.timeOfDay).filter(item => passingTags.timeOfDay[item])}
+          onItemClick={(item) => handleTagItemClick(item, 'timeOfDay')}
+        />
+        <TagFilter
+          title="투어"
+          items={tours}
+          activeItems={Object.keys(passingTags.tour).filter(item => passingTags.tour[item])}
+          onItemClick={(item) => handleTagItemClick(item, 'tour')}
+        />
       </div>
     </>
   );

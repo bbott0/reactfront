@@ -105,7 +105,7 @@ const SignUp = () => {
             id="gender"
             value={gender}
             onChange={(event) => setGender(event.target.value)}
-            style={{ width: '100%' }} 
+            style={{ width: '95%' }} 
             required
           >
             <option value="">성별을 선택하세요</option>
@@ -113,7 +113,7 @@ const SignUp = () => {
             <option value="female">여성</option>
           </select>
         </div>
-        <button type="submit" className="btn-primary">가입하기</button>
+        <button type="submit" >가입하기</button>
       </form>
     </div>
   );

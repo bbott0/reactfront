@@ -1,39 +1,101 @@
 /* sideFilter.css */
-.boardTag {
+
+/* General container style for side filter */
+.side-filter {
+  width: 60%; /* Adjust this value to match the desired width */
   padding: 10px;
-  margin: 5px;
-  border: 1px solid #ccc;
-  background-color: white;
-  cursor: pointer;
+  box-sizing: border-box;
+  height: 100vh; /* Full height to ensure it takes the entire viewport height */
+  overflow-y: auto; /* Enable scrolling if content overflows */
 }
 
-.boardTag.active {
-  background-color: #007BFF;
-  color: white;
+/* Container for the search section */
+.searchContainer {
+  margin-bottom: 0; 
+  padding: 0 20px;
 }
 
-.searchContainer, .filterContainer {
-  margin: 20px;
-  background-color : #f8eae1;
-  
+/* Top search bar styling */
+.topSearch {
+  margin-bottom: 0; 
+  text-align: center;
+  padding: 10px 0;
 }
 
-.filterGroup {
+/* Input container styling */
+.inputContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 20px;
 }
 
+/* Top search bar input styling */
+.topSearchBar {
+  width: 80%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+/* Search button styling */
+.searchBtn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* Search button icon styling */
+.searchBtnIcon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Filter container styling */
+.filterContainer {
+  margin-top: 0; 
+  padding: 20px;
+}
+
+/* Filter group styling */
+.filterGroup {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccc; 
+}
+
+/* Last filter group styling */
+.filterGroup:last-child {
+  border-bottom: none; 
+}
+
+/* Filter group header styling */
 .filterGroup h3 {
   margin-bottom: 10px;
 }
 
-.searchBtn {
-  width: 30px;
-  border: none;
-  background: none;
+/* Board tag styling */
+.boardTag {
+  margin: 5px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
   cursor: pointer;
+  background-color: #f9f9f9;
+  transition: background-color 0.3s;
 }
 
-.searchBtnIcon {
-  width: 100%;
-  height: 100%;
+/* Active board tag styling */
+.boardTag.active {
+  background-color: #007bff;
+  color: white;
+  border: 1px solid #007bff;
+}
+
+/* Hover effect for board tag */
+.boardTag:hover {
+  background-color: #007bff;
+  color: white;
+  border: 1px solid #007bff;
 }
